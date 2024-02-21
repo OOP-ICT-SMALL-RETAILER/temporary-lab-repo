@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\RetailThingey.Application.Abstractions\RetailThingey.Application.Abstractions.csproj"/>
+        <ProjectReference Include="..\RetailThingey.Application.Contracts\RetailThingey.Application.Contracts.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
+    </ItemGroup>
+
+</Project>
