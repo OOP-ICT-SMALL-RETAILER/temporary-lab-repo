@@ -62,11 +62,11 @@
 Не передавать лишнюю информацию
 
 Методы:
-GET - запросить информацию
-POST - отправить информацию
-PUT - обновить информацию
-PATCH - игнорируем, равноценен PUT
-DELETE - удаляем, логично
+- GET - запросить информацию
+- POST - отправить информацию
+- PUT - обновить информацию
+- PATCH - игнорируем, равноценен PUT
+- DELETE - удаляем, логично
 
 
 # Эндпоинты
@@ -76,20 +76,25 @@ DELETE - удаляем, логично
 Файлы cookie - это долгосрочный ключ, который хранится локально.
 
 Регистрация пользователя - POST /user/register
+
 request - {"name": "Иван", "email": "ivan@example.com", "password": "password123"}
+
 response - {"userCookie": "5n6w4k5j6"}
 
 Залогиниться на новом устройстве - GET /user/login
 request - {"email": "ivan@example.com", "password": "password123"}
 responce - {"userCookie": "5n6w4k5j7"}
 
+
 Разлогиниться на этом устройстве - POST user/logout
 request -  {"userCookie": "5n6w4k5j6"}
 response - {“message”: “you have logged out of your account”}
 
+
 Разлогиниться со всех устройств - POST user/logout/total
 request - {"email": "ivan@example.com", "password": "password123"}
 response - {“message”: “you have logged out of your account on all devices”}
+
 
 Выбор предпочтительного пункта выдачи - POST /user/address
 request - {“userCookie”: "5n6w4k5j6", “ID выбранного пункта выдачи”: “aebaebebebebebe”}
@@ -101,9 +106,11 @@ request - {“userCookie”: "5n6w4k5j6", “ID выбранного пункт�
 request - {"userCookie": "5n6w4k5j6", reviewId: “7y8ujn65jnk5j6nkf”,  "productID": "3h42k5j56", "rating": 4, "comment": "Отличный товар, всем рекомендую!"}
 response - {"message": "Отзыв успешно добавлен"}
 
+
 Удаление отзыва - DELETE api/v1/reviews/delete
 request - {"userCookie": "5n6w4k5j6", "reviewId":"7y8ujn65jnk5j6nkf"}
 response - {"message":"Отзыв успешно удален"}
+
  
 Редактирование отзыва - PUT api/v1/reviews/change
 request - {"userCookie": "5n6w4k5j6", "reviewId":"7y8ujn65jnk5j6nkf", ?"rating": 4, ?"comment": "Товар неплохой, но есть небольшие недочеты"}
