@@ -1,6 +1,8 @@
 # Электронная торговая площадка для мелких производителей
 
-![IDEF1X (4)](https://github.com/OOP-ICT-SMALL-RETAILER/temporary-lab-repo/assets/112976482/f7ed2d81-8bbc-4cdd-bc9d-5acd807c5a88)
+![IDEF1X (1)](https://github.com/OOP-ICT-SMALL-RETAILER/temporary-lab-repo/assets/112976482/3ecd59da-f436-4324-9f68-d59e1406a514)
+
+
 
 Мы работаем над электронной торговой площадкой для мелких производителей (из похожих - яндекс маркет)
 
