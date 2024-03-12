@@ -1,3 +1,5 @@
+using RetailThingey.Application.Models.Review;
+
 public interface IReviewService
 {
     void AddReview(Review review);

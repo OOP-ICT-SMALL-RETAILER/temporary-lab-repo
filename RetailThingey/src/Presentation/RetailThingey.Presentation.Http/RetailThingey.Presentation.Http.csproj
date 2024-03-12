@@ -8,4 +8,8 @@
         <Folder Include="Controllers\"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\RetailThingey.Application\RetailThingey.Application.csproj" />
+    </ItemGroup>
+
 </Project>
