@@ -1,6 +1,8 @@
+using System.Collections.ObjectModel;
+
 namespace RetailThingey.Application.Models.Review;
 
-public class ReviewResponseByUser
+public class ReviewResponseByUser(Collection<Review> reviews)
 {
-    public List<Review> Reviews { get; set; }
+    public Collection<Review> Reviews { get; set; } = reviews;
 }

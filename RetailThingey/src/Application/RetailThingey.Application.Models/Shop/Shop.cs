@@ -1,8 +1,8 @@
 namespace RetailThingey.Application.Models.Shop;
 
-public class Shop
+public class Shop(string name, string email, string password)
 {
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
+    public string Name { get; set; } = name;
+    public string Email { get; set; } = email;
+    public string Password { get; set; } = password;
 }

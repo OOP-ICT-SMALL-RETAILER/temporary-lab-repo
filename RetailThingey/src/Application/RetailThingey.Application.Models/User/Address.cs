@@ -1,6 +1,6 @@
 namespace RetailThingey.Application.Models;
 
-public class Address
+public class Address(string id)
 {
-    public string ID { get; set; }
+    public string ID { get; set; } = id;
 }

@@ -1,11 +1,19 @@
+using System.Collections.ObjectModel;
+
 namespace RetailThingey.Application.Models.Product;
 
-public class ProductsListRequest
+public class ProductsListRequest(
+    string productNameLike,
+    string productCategory,
+    double productPrice,
+    string productSeller,
+    double productRating,
+    Collection<Product> products)
 {
-    public string ProductNameLike { get; set; }
-    public string ProductCategory { get; set; }
-    public double ProductPrice { get; set; }
-    public string ProductSeller { get; set; }
-    public double ProductRating { get; set; }
-    public List<Product> Products { get; set; }
+    public string ProductNameLike { get; set; } = productNameLike;
+    public string ProductCategory { get; set; } = productCategory;
+    public double ProductPrice { get; set; } = productPrice;
+    public string ProductSeller { get; set; } = productSeller;
+    public double ProductRating { get; set; } = productRating;
+    public Collection<Product> Products { get; set; } = products;
 }
