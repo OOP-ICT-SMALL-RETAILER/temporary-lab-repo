@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RetailThingey.Application.Models.Product;
 using System.Collections.Generic;
 
 namespace IProduct.Controllers
@@ -15,7 +16,7 @@ namespace IProduct.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Product> Post(Product product)
+        public ActionResult<_Product> Post(_Product product)
         {
             _productService.AddProduct(product);
             return CreatedAtAction(nameof(Get), new { id = product.Id }, product);

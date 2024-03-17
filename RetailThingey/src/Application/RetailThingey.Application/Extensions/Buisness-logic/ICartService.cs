@@ -1,9 +1,11 @@
+using RetailThingey.Application.Models.Product;
+
 public interface ICartService
 {
-    void AddToCart(Product product, int quantity);
-    void RemoveFromCart(Product product);
-    void UpdateQuantity(Product product, int newQuantity);
-    List<Product> GetCartItems();
+    void AddToCart(_Product product, int quantity);
+    void RemoveFromCart(_Product product);
+    void UpdateQuantity(_Product product, int newQuantity);
+    List<_Product> GetCartItems();
     decimal GetTotalPrice();
 }
 
@@ -16,7 +18,7 @@ public class CartService : ICartService
         _cartItems = new List<CartItem>();
     }
 
-    public void AddToCart(Product product, int quantity)
+    public void AddToCart(_Product product, int quantity)
     {
         var existingItem = _cartItems.FirstOrDefault(item => item.Product.Id == product.Id);
         if (existingItem != null)
@@ -29,7 +31,7 @@ public class CartService : ICartService
         }
     }
 
-    public void RemoveFromCart(Product product)
+    public void RemoveFromCart(_Product product)
     {
         var itemToRemove = _cartItems.FirstOrDefault(item => item.Product.Id == product.Id);
         if (itemToRemove != null)
@@ -38,7 +40,7 @@ public class CartService : ICartService
         }
     }
 
-    public void UpdateQuantity(Product product, int newQuantity)
+    public void UpdateQuantity(_Product product, int newQuantity)
     {
         var itemToUpdate = _cartItems.FirstOrDefault(item => item.Product.Id == product.Id);
         if (itemToUpdate != null)
@@ -47,7 +49,7 @@ public class CartService : ICartService
         }
     }
 
-    public List<Product> GetCartItems()
+    public List<_Product> GetCartItems()
     {
         return _cartItems.Select(item => item.Product).ToList();
     }
@@ -58,15 +60,8 @@ public class CartService : ICartService
     }
 }
 
-public class CartItem
+public class CartItem(_Product product, int quantity)
 {
-    public Product Product { get; set; }
-    public int Quantity { get; set; }
-}
-
-public class Product
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public decimal Price { get; set; }
+    public readonly _Product Product  = product;
+    public int Quantity { get; set; } = quantity;
 }

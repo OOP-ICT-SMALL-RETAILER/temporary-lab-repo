@@ -1,6 +1,8 @@
+using RetailThingey.Application.Models.Product;
+
 public interface IProductService
 {
-    void AddProduct(Product product);
+    void AddProduct(_Product product);
     void DeleteProduct(int productId);
 }
 
@@ -13,7 +15,7 @@ public class ProductService : IProductService
         _productRepository = productRepository;
     }
 
-    public void AddProduct(Product product)
+    public void AddProduct(_Product product)
     {
         _productRepository.Add(product);
     }

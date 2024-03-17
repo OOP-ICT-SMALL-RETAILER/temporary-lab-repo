@@ -4,5 +4,5 @@ namespace RetailThingey.Application.Models.Review;
 
 public class ReviewResponseByUser(Collection<Review> reviews)
 {
-    public Collection<Review> Reviews { get; set; } = reviews;
+    public Collection<Review> Reviews { get; } = reviews;
 }

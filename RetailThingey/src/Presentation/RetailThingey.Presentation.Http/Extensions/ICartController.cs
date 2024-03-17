@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RetailThingey.Application.Models.Product;
 using System.Collections.Generic;
 
 namespace ICartController.Controllers
@@ -15,28 +16,28 @@ namespace ICartController.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart(Product product, int quantity)
+        public ActionResult AddToCart(_Product product, int quantity)
         {
             _cartService.AddToCart(product, quantity);
             return Ok();
         }
 
         [HttpDelete]
-        public ActionResult RemoveFromCart(Product product)
+        public ActionResult RemoveFromCart(_Product product)
         {
             _cartService.RemoveFromCart(product);
             return Ok();
         }
 
         [HttpPut]
-        public ActionResult UpdateQuantity(Product product, int newQuantity)
+        public ActionResult UpdateQuantity(_Product product, int newQuantity)
         {
             _cartService.UpdateQuantity(product, newQuantity);
             return Ok();
         }
 
         [HttpGet]
-        public ActionResult<List<Product>> GetCartItems()
+        public ActionResult<List<_Product>> GetCartItems()
         {
             var cartItems = _cartService.GetCartItems();
             return Ok(cartItems);

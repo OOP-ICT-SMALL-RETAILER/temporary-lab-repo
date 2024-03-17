@@ -1,6 +1,6 @@
 namespace RetailThingey.Application.Models.Shop;
 
-public class ShopLoginResponse
+public class ShopLoginResponse(string shopCookie)
 {
-    public string ShopCookie { get; set; }
+    public string ShopCookie { get; set; } = shopCookie;
 }
