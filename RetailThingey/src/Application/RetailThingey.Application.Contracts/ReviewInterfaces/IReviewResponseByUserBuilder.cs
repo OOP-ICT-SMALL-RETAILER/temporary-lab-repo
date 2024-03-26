@@ -2,8 +2,8 @@ using RetailThingey.Application.Models.Review;
 
 namespace RetailThingey.Application.Contracts.Review;
 
-public interface ReviewResponseByUserBuilder
+public interface IReviewResponseByUserBuilder
 {
-    ReviewResponseByUserBuilder setReviews(List<Models.Review.Review> reviews);
+    ReviewResponseByUserBuilder setReviews(List<Models.Review.ReviewModels> reviews);
     ReviewResponseByUser build();
 }

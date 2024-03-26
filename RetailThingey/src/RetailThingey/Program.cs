@@ -1,4 +1,6 @@
 #pragma warning disable CA1506
+#pragma warning disable SA1516
+#pragma warning restore SA1516
 
 using Itmo.Dev.Platform.Common.Extensions;
 using Itmo.Dev.Platform.Logging.Extensions;

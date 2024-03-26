@@ -7,5 +7,5 @@ public interface IReviewBuilder
     IReviewBuilder SetProductID(string productId);
     IReviewBuilder SetRating(int rating);
     IReviewBuilder SetComment(string comment);
-    Models.Review.Review Build();
+    Models.Review.ReviewModels Build();
 }

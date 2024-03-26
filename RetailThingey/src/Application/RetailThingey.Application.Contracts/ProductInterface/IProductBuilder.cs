@@ -10,5 +10,5 @@ public interface IProductBuilder
     IProductBuilder SetDescription(string description);
     IProductBuilder SetRating(double rating);
     IProductBuilder SetIsListed(bool isListed);
-    _Product Build();
+    ProductModel Build();
 }

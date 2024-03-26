@@ -1,6 +1,6 @@
 namespace RetailThingey.Application.Models.Product;
 
-public class _Product(string name, string description)
+public class ProductModel(string name, string description)
 {
     public int Id { get; set; }
     public string Name { get; set; } = name;

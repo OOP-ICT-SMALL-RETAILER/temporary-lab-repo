@@ -340,3 +340,10 @@ POST /orders/{orderID}/cancel
 request - {"userCookie": "5n6w4k5j6"}  
 response - {"message": "Заказ успешно отменен"}
 ```
+
+
+
+   ```csharp
+   // ReSharper disable once StyleCop.CSharp.MaintainabilityRules
+   ```
+

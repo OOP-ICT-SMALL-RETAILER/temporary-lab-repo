@@ -3,8 +3,6 @@
     <ItemGroup>
         <ProjectReference Include="..\Application\RetailMarketplace.Application\RetailMarketplace.Application.csproj"/>
         <ProjectReference Include="..\Infrastructure\RetailMarketplace.Infrastructure.Persistence\RetailMarketplace.Infrastructure.Persistence.csproj"/>
-        <ProjectReference Include="..\Presentation\RetailMarketplace.Presentation.Grpc\RetailMarketplace.Presentation.Grpc.csproj"/>
-        <ProjectReference Include="..\Presentation\RetailMarketplace.Presentation.Kafka\RetailMarketplace.Presentation.Kafka.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

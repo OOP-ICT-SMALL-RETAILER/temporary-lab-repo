@@ -1,6 +1,6 @@
 namespace RetailThingey.Application.Models.Review;
 
-public class Review(string userCookie, string reviewId, string productId, string comment)
+public class ReviewModels(string userCookie, string reviewId, string productId, string comment)
 {
     public string UserCookie { get; set; } = userCookie;
 

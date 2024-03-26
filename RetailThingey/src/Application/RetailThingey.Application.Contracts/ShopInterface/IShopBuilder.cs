@@ -7,5 +7,5 @@ public interface IShopBuilder
     IShopBuilder SetName(string name);
     IShopBuilder SetEmail(string email);
     IShopBuilder SetPassword(string password);
-    Shop Build();
+    ShopModels Build();
 }

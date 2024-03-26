@@ -1,7 +1,8 @@
 namespace RetailThingey.Application.Models.Review;
 
-public class DeleteReviewRequest
+public class DeleteReviewRequest(string userCookie, string reviewId)
 {
-    public string UserCookie { get; }
-    public string ReviewId { get; set; }
+    public string UserCookie { get; } = userCookie;
+
+    public string ReviewId { get; set; } = reviewId;
 }

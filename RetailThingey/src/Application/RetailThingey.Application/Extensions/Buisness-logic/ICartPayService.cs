@@ -2,9 +2,9 @@ using RetailThingey.Application.Models.Product;
 
 public interface ICartPayService
 {
-    void AddItemToCart(_Product item);
+    void AddItemToCart(ProductModel item);
     void RemoveItemFromCart(int itemId);
-    List<_Product> GetCartItems();
+    List<ProductModel> GetCartItems();
     void ClearCart();
     decimal CalculateTotal();
 }
@@ -16,23 +16,23 @@ public interface IPaymentPayService
 
 public class CartPayService : ICartPayService
 {
-    private List<_Product> _cartItems = new List<_Product>();
+    private List<ProductModel> _cartItems = new List<ProductModel>();
 
-    public void AddItemToCart(_Product item)
+    public void AddItemToCart(ProductModel item)
     {
         _cartItems.Add(item);
     }
 
     public void RemoveItemFromCart(int itemId)
     {
-        _Product itemToRemove = _cartItems.FirstOrDefault(i => i.Id == itemId);
+        ProductModel itemToRemove = _cartItems.FirstOrDefault(i => i.Id == itemId);
         if (itemToRemove != null)
         {
             _cartItems.Remove(itemToRemove);
         }
     }
 
-    public List<_Product> GetCartItems()
+    public List<ProductModel> GetCartItems()
     {
         return _cartItems;
     }

@@ -16,10 +16,10 @@ namespace IProduct.Controllers
         }
 
         [HttpPost]
-        public ActionResult<_Product> Post(_Product product)
+        public ActionResult<ProductModel> Post(ProductModel productModel)
         {
-            _productService.AddProduct(product);
-            return CreatedAtAction(nameof(Get), new { id = product.Id }, product);
+            _productService.AddProduct(productModel);
+            return CreatedAtAction(nameof(Get), new { id = productModel.Id }, productModel);
         }
 
         [HttpDelete("{id}")]

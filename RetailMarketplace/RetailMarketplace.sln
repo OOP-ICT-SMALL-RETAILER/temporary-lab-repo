@@ -12,10 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailMarketplace.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailMarketplace.Infrastructure.Persistence", "RetailMarketplace\src\Infrastructure\RetailMarketplace.Infrastructure.Persistence\RetailMarketplace.Infrastructure.Persistence.csproj", "{83A6330C-26B8-45BA-BC9B-1B361395E64C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailMarketplace.Presentation.Kafka", "RetailMarketplace\src\Presentation\RetailMarketplace.Presentation.Kafka\RetailMarketplace.Presentation.Kafka.csproj", "{244F19DE-80F0-4AB7-A1AD-6F4C02DF7BA4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailMarketplace.Presentation.Grpc", "RetailMarketplace\src\Presentation\RetailMarketplace.Presentation.Grpc\RetailMarketplace.Presentation.Grpc.csproj", "{D2392993-82B4-43F8-B41F-8F76A0A4BC26}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,13 +42,5 @@ Global
 		{83A6330C-26B8-45BA-BC9B-1B361395E64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83A6330C-26B8-45BA-BC9B-1B361395E64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83A6330C-26B8-45BA-BC9B-1B361395E64C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{244F19DE-80F0-4AB7-A1AD-6F4C02DF7BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{244F19DE-80F0-4AB7-A1AD-6F4C02DF7BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{244F19DE-80F0-4AB7-A1AD-6F4C02DF7BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{244F19DE-80F0-4AB7-A1AD-6F4C02DF7BA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2392993-82B4-43F8-B41F-8F76A0A4BC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2392993-82B4-43F8-B41F-8F76A0A4BC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2392993-82B4-43F8-B41F-8F76A0A4BC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2392993-82B4-43F8-B41F-8F76A0A4BC26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

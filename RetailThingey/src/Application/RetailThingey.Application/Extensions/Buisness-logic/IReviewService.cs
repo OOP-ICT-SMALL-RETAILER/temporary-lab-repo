@@ -2,7 +2,7 @@ using RetailThingey.Application.Models.Review;
 
 public interface IReviewService
 {
-    void AddReview(Review review);
+    void AddReview(ReviewModels reviewModels);
     void DeleteReview(int reviewId);
 }
 
@@ -15,9 +15,9 @@ public class ReviewService : IReviewService
         _reviewRepository = reviewRepository;
     }
 
-    public void AddReview(Review review)
+    public void AddReview(ReviewModels reviewModels)
     {
-        _reviewRepository.Add(review);
+        _reviewRepository.Add(reviewModels);
     }
 
     public void DeleteReview(int reviewId)

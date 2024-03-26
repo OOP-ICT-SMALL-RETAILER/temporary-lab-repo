@@ -1,5 +1,8 @@
 namespace RetailThingey.Application.Models.Product;
 
+#pragma warning disable SA1516 // ElementsMustBeSeparatedByBlankLine
+#pragma warning restore SA1516 // ElementsMustBeSeparatedByBlankLine
+
 public class ProductRequest(
     string shopCookie,
     string name,

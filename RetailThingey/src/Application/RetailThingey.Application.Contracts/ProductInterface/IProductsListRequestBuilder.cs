@@ -9,6 +9,6 @@ public interface IProductsListRequestBuilder
     IProductsListRequestBuilder SetProductPrice(double productPrice);
     IProductsListRequestBuilder SetProductSeller(string productSeller);
     IProductsListRequestBuilder SetProductRating(double productRating);
-    IProductsListRequestBuilder SetProducts(List<_Product> products);
+    IProductsListRequestBuilder SetProducts(List<ProductModel> products);
     ProductsListRequest Build();
 }

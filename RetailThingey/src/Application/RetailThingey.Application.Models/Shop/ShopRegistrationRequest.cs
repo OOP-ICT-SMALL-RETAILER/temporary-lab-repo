@@ -1,3 +1,6 @@
+#pragma warning disable SA1516 // ElementsMustBeSeparatedByBlankLine
+#pragma warning restore SA1516 // ElementsMustBeSeparatedByBlankLine
+
 namespace RetailThingey.Application.Models.Shop;
 
 public class ShopRegistrationRequest(string name, string email, string password)

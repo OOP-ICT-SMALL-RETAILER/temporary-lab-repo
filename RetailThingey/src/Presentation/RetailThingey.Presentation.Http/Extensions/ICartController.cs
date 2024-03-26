@@ -16,28 +16,28 @@ namespace ICartController.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddToCart(_Product product, int quantity)
+        public ActionResult AddToCart(ProductModel productModel, int quantity)
         {
-            _cartService.AddToCart(product, quantity);
+            _cartService.AddToCart(productModel, quantity);
             return Ok();
         }
 
         [HttpDelete]
-        public ActionResult RemoveFromCart(_Product product)
+        public ActionResult RemoveFromCart(ProductModel productModel)
         {
-            _cartService.RemoveFromCart(product);
+            _cartService.RemoveFromCart(productModel);
             return Ok();
         }
 
         [HttpPut]
-        public ActionResult UpdateQuantity(_Product product, int newQuantity)
+        public ActionResult UpdateQuantity(ProductModel productModel, int newQuantity)
         {
-            _cartService.UpdateQuantity(product, newQuantity);
+            _cartService.UpdateQuantity(productModel, newQuantity);
             return Ok();
         }
 
         [HttpGet]
-        public ActionResult<List<_Product>> GetCartItems()
+        public ActionResult<List<ProductModel>> GetCartItems()
         {
             var cartItems = _cartService.GetCartItems();
             return Ok(cartItems);

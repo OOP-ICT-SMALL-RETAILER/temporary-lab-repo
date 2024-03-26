@@ -16,9 +16,9 @@ namespace IReview.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Review review)
+        public ActionResult Add(ReviewModels reviewModels)
         {
-            _reviewService.AddReview(review);
+            _reviewService.AddReview(reviewModels);
             return Ok();
         }
 

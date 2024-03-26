@@ -1,6 +1,6 @@
 namespace RetailThingey.Application.Models.Review;
 
-public class ChangeReviewResponse
+public class ChangeReviewResponse(string message)
 {
-    public string Message { get; set; }
+    public string Message { get; set; } = message;
 }
