@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using RetailThingey.Application.Extensions.Buisnesslogic;
 using RetailThingey.Application.Models.Product;
-using System.Collections.Generic;
 
-namespace ICartController.Controllers
-{
+namespace RetailThingey.Presentation.Http.Extensions;
+
     [ApiController]
     [Route("[controller]")]
     public class CartController : ControllerBase
@@ -50,4 +50,3 @@ namespace ICartController.Controllers
             return Ok(totalPrice);
         }
     }
-}

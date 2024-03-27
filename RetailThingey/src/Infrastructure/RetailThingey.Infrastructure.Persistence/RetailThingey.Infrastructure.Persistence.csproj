@@ -11,7 +11,7 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Application\Sample.Application.Abstractions\Sample.Application.Abstractions.csproj"/>
+        <ProjectReference Include="..\..\Application\RetailThingey.Application.Abstractions\RetailThingey.Application.Abstractions.csproj"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />

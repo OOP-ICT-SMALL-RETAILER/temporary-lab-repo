@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using RetailThingey.Application.Extensions.Buisnesslogic;
 using RetailThingey.Application.Models.Review;
-using System.Collections.Generic;
 
-namespace IReview.Controllers
-{
+namespace RetailThingey.Presentation.Http.Extensions;
+
     [ApiController]
     [Route("[controller]")]
     public class ReviewController : ControllerBase
@@ -29,4 +29,3 @@ namespace IReview.Controllers
             return Ok();
         }
     }
-}

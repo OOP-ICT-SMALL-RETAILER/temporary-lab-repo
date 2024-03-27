@@ -1,3 +1,5 @@
+namespace RetailThingey.Application.Extensions.Buisnesslogic;
+
 public interface IProductPriceService
 {
     void IncreasePrice(int productId, decimal amount);
@@ -7,7 +9,7 @@ public interface IProductPriceService
 public class ProductPriceService : IProductPriceService
 {
     private readonly IProductRepository _productRepository;
-
+    
     public ProductPriceService(IProductRepository productRepository)
     {
         _productRepository = productRepository;
@@ -16,16 +18,16 @@ public class ProductPriceService : IProductPriceService
     public void IncreasePrice(int productId, decimal amount)
     {
         var product = _productRepository.GetProductById(productId);
-        product.Price += amount;
+        product.CurrentPrice += (double)amount;
         _productRepository.Update(product);
     }
 
     public void DecreasePrice(int productId, decimal amount)
     {
         var product = _productRepository.GetProductById(productId);
-        if (product.Price - amount >= 0)
+        if (product.CurrentPrice - (double)amount >= 0)
         {
-            product.Price -= amount;
+            product.CurrentPrice -= (double)amount;
             _productRepository.Update(product);
         }
     }

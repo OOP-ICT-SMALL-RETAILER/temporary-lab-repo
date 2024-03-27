@@ -1,9 +1,9 @@
 using Itmo.Dev.Platform.Postgres.Extensions;
 using Itmo.Dev.Platform.Postgres.Plugins;
+using Microsoft.Extensions.DependencyInjection;
 using RetailThingey.Application.Abstractions.Persistence;
 using RetailThingey.Infrastructure.Persistence.Migrations;
 using RetailThingey.Infrastructure.Persistence.Plugins;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace RetailThingey.Infrastructure.Persistence.Extensions;
 

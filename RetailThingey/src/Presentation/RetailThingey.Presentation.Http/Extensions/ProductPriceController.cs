@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using RetailThingey.Application.Extensions.Buisnesslogic;
 
-namespace IProductPrice.Controllers
-{
+namespace RetailThingey.Presentation.Http.Extensions;
+
     [ApiController]
     [Route("[controller]")]
     public class ProductPriceController : ControllerBase
@@ -27,4 +28,3 @@ namespace IProductPrice.Controllers
             return Ok();
         }
     }
-}

@@ -1,5 +1,7 @@
 using RetailThingey.Application.Models.Review;
 
+namespace RetailThingey.Application.Extensions.Buisnesslogic;
+
 public interface IReviewService
 {
     void AddReview(ReviewModels reviewModels);

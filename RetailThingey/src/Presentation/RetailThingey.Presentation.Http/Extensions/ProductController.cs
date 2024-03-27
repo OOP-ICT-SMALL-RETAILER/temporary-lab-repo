@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using RetailThingey.Application.Extensions.Buisnesslogic;
 using RetailThingey.Application.Models.Product;
-using System.Collections.Generic;
 
-namespace IProduct.Controllers
-{
+namespace RetailThingey.Presentation.Http.Extensions;
+
     [ApiController]
     [Route("[controller]")]
     public class ProductController : ControllerBase
@@ -19,7 +19,9 @@ namespace IProduct.Controllers
         public ActionResult<ProductModel> Post(ProductModel productModel)
         {
             _productService.AddProduct(productModel);
-            return CreatedAtAction(nameof(Get), new { id = productModel.Id }, productModel);
+
+            // return CreatedAtAction(, new { id = productModel.Id }, productModel);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
@@ -29,4 +31,3 @@ namespace IProduct.Controllers
             return NoContent();
         }
     }
-}

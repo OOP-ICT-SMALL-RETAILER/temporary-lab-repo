@@ -1,5 +1,7 @@
 using RetailThingey.Application.Models.Product;
 
+namespace RetailThingey.Application.Extensions.Buisnesslogic;
+
 public interface IProductService
 {
     void AddProduct(ProductModel productModel);

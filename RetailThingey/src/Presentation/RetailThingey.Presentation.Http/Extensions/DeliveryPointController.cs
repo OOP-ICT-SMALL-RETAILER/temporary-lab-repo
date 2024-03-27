@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using RetailThingey.Application.Extensions.Buisnesslogic;
+using RetailThingey.Application.Models.Shop;
 
-namespace IDeliveryPoint.Controllers
-{
+namespace RetailThingey.Presentation.Http.Extensions;
+
     [ApiController]
     [Route("[controller]")]
     public class DeliveryPointController : ControllerBase
@@ -22,6 +23,7 @@ namespace IDeliveryPoint.Controllers
             {
                 return NotFound();
             }
+
             return Ok(dp);
         }
 
@@ -39,4 +41,3 @@ namespace IDeliveryPoint.Controllers
             return Ok(deliveryPoints);
         }
     }
-}

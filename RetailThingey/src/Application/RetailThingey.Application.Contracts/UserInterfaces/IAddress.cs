@@ -4,6 +4,6 @@ namespace RetailThingey.Application.Contracts.User;
 
 public interface IAddress
 {
-    IAddress SetID(String ID);
+    IAddress SetID(string id);
     Address Build();
 }

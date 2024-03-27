@@ -1,23 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using RetailThingey.Application.Extensions.Buisnesslogic;
+using RetailThingey.Application.Models.Product;
 
-namespace ICartPay.Controllers
-{
+namespace RetailThingey.Presentation.Http.Extensions;
+
     [ApiController]
     [Route("[controller]")]
-    public class CartController : ControllerBase
+    public class CartPayController : ControllerBase
     {
         private readonly ICartPayService _cartPayService;
         private readonly IPaymentPayService _paymentPayService;
 
-        public CartController(ICartPayService cartPayService, IPaymentPayService paymentPayService)
+        public CartPayController(ICartPayService cartPayService, IPaymentPayService paymentPayService)
         {
             _cartPayService = cartPayService;
             _paymentPayService = paymentPayService;
         }
 
         [HttpPost("add")]
-        public ActionResult AddItemToCart(Item item)
+        public ActionResult AddItemToCart(ProductModel item)
         {
             _cartPayService.AddItemToCart(item);
             return Ok();
@@ -31,7 +32,7 @@ namespace ICartPay.Controllers
         }
 
         [HttpGet("items")]
-        public ActionResult<List<Item>> GetCartItems()
+        public ActionResult<List<ProductModel>> GetCartItems()
         {
             var cartItems = _cartPayService.GetCartItems();
             return Ok(cartItems);
@@ -66,4 +67,3 @@ namespace ICartPay.Controllers
             }
         }
     }
-}

@@ -4,6 +4,6 @@ namespace RetailThingey.Application.Contracts.Review;
 
 public interface IReviewResponseByUserBuilder
 {
-    ReviewResponseByUserBuilder setReviews(List<Models.Review.ReviewModels> reviews);
-    ReviewResponseByUser build();
+    IReviewResponseByUserBuilder SetReviews(IList<ReviewModels> reviews);
+    ReviewResponseByUser Build();
 }

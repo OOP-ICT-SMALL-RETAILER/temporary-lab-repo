@@ -4,11 +4,11 @@
 
 using Itmo.Dev.Platform.Common.Extensions;
 using Itmo.Dev.Platform.Logging.Extensions;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using RetailThingey.Application.Extensions;
 using RetailThingey.Infrastructure.Persistence.Extensions;
 using RetailThingey.Presentation.Http.Extensions;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -26,13 +26,10 @@ builder.Services
 
 builder.Services.AddSwaggerGen().AddEndpointsApiExplorer();
 
-
-
 builder.Host.AddPlatformSerilog(builder.Configuration);
 builder.Services.AddUtcDateTimeProvider();
 
 WebApplication app = builder.Build();
-
 
 app.UseRouting();
 app.UseSwagger();

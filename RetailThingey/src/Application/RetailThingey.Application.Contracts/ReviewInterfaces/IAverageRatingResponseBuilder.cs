@@ -2,8 +2,8 @@ using RetailThingey.Application.Models.Review;
 
 namespace RetailThingey.Application.Contracts.Review;
 
-public interface AverageRatingResponseBuilder
+public interface IAverageRatingResponseBuilder
 {
-    AverageRatingResponseBuilder setAverageRating(double averageRating);
-    AverageRatingResponse build();
+    IAverageRatingResponseBuilder SetAverageRating(double averageRating);
+    AverageRatingResponse Build();
 }
