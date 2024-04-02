@@ -1,10 +1,12 @@
-// <copyright file="ApplicationDbContext.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
-// </copyright>
+#pragma warning disable SA1206
 
 using Microsoft.EntityFrameworkCore;
+using RetailThingey.Application.Models;
+using RetailThingey.Application.Models.Product;
+using RetailThingey.Application.Models.Review;
+using RetailThingey.Application.Models.Shop;
 
-namespace RetailThingey.Infrastructure.Persistence.Contexts;
+namespace RetailThings.Infrastructure.Persistence.Contexts;
 
 public class ApplicationDbContext : DbContext
 {
@@ -12,27 +14,21 @@ public class ApplicationDbContext : DbContext
 
     public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
-    public required DbSet<DbUser> Users { get; set; }
+    public required DbSet<User> Users { get; set; }
 
-    public required DbSet<DbReview> Reviews { get; set; }
+    public required DbSet<ReviewModels> Reviews { get; set; }
 
-    public required DbSet<DbCookie> Cookies { get; set; }
-
-    public required DbSet<DbShop> Shops { get; set; }
-
-    public required DbSet<DbOrder> Orders { get; set; }
-
-    public required DbSet<DbCart> Carts { get; set; }
-
-    public required DbSet<DbItem> Items { get; set; }
-
-    public required DbSet<DbSoldCarts> SoldCarts { get; set; }
-
-    public required DbSet<DbPickUpPoint> PickUpPoints { get; set; }
+    public required DbSet<ShopModels> Shops { get; set; }
+    
+    public required DbSet<ProductModel> Products { get; set; }
+    
+    public required DbSet<DeliveryPoint> Delivery { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+
+        // Сюда добавлять различные конфигурации ваших файлов
         base.OnModelCreating(modelBuilder);
     }
 }
