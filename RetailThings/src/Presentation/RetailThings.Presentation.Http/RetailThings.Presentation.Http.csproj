@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\RetailThings.Application.Contracts\RetailThings.Application.Contracts.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\RetailThings.Infrastructure.Persistence\RetailThings.Infrastructure.Persistence.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    </ItemGroup>
+</Project>

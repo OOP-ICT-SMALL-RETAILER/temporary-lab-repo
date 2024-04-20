@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Infrastructure\RetailThings.Infrastructure.Persistence\RetailThings.Infrastructure.Persistence.csproj" />
+        <ProjectReference Include="..\RetailThings.Application.Abstractions\RetailThings.Application.Abstractions.csproj" />
+        <ProjectReference Include="..\RetailThings.Application.Models\RetailThings.Application.Models.csproj"/>
+    </ItemGroup>
+
+</Project>
