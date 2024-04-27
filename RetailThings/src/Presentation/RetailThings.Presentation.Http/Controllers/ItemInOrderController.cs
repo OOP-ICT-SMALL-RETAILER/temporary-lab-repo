@@ -3,8 +3,9 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Entities;
+using RetailThings.Application.Models.ItemInOrder;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -21,10 +22,10 @@ public class ItemInOrderController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    public ActionResult<ItemInOrder> Get(int id)
+    public async Task<ActionResult<ItemInOrder>> Get(int id)
     {
-        var itemInOrder = _itemInOrderService.GetItemInOrder(id);
-        if (itemInOrder == null)
+        var itemInOrder = await _itemInOrderService.GetItemInOrder(id);
+        if (itemInOrder is null)
         {
             return NotFound();
         }
@@ -32,29 +33,29 @@ public class ItemInOrderController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<ItemInOrder> Post(ItemInOrder itemInOrder)
+    public async Task<ActionResult> Post(CreateItemInOrderModel itemInOrder)
     {
-        _itemInOrderService.CreateItemInOrder(itemInOrder);
-        return CreatedAtAction(nameof(Get), new { id = itemInOrder.ItemInOrderId}, itemInOrder);
+        await _itemInOrderService.CreateItemInOrder(itemInOrder);
+        return Ok();
     }
 
     
     [HttpPut]
-    public ActionResult<ItemInOrder> Put(ItemInOrder itemInOrder)
+    public async Task<ActionResult<ItemInOrder>> Put(CreateItemInOrderModel itemInOrder)
     {
-        _itemInOrderService.UpdateItemInOrder(itemInOrder);        
-        return CreatedAtAction(nameof(Get), new { id = itemInOrder.ItemInOrderId}, itemInOrder);
+        await _itemInOrderService.UpdateItemInOrder(itemInOrder);
+        return Ok();
     }
     
     [HttpDelete("{id}")]
-    public ActionResult<ItemInOrder> Delete(int id)
+    public async Task<ActionResult<ItemInOrder>> Delete(int id)
     {
-        var pickUpPoint = _itemInOrderService.GetItemInOrder(id);
-        if (pickUpPoint == null)
+        var pickUpPoint = await _itemInOrderService.GetItemInOrder(id);
+        if (pickUpPoint is null)
         {
             return NotFound();
         }
-        _itemInOrderService.DeleteItemInOrder(id);
+        await _itemInOrderService.DeleteItemInOrder(id);
         return Ok(pickUpPoint);
     } 
 

@@ -3,8 +3,9 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Entities;
+using RetailThings.Application.Models.Order;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -19,11 +20,12 @@ public class OrderController : ControllerBase
     {
         _orderService = orderService;
     }
+    
     [HttpGet("{id}")]
-    public ActionResult<Order> Get(int id)
+    public async Task<ActionResult<Order>> Get(int id)
     {
-        var order = _orderService.GetOrderById(id);
-        if (order == null)
+        var order = await _orderService.GetOrderById(id);
+        if (order is null)
         {
             return NotFound();
         }
@@ -31,29 +33,29 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Order> Post(Order order)
+    public async Task<ActionResult> Post(CreateOrderModel order)
     {
-        _orderService.CreateOrder(order);
-        return CreatedAtAction(nameof(Get), new { id = order.OrderId}, order);
+        await _orderService.CreateOrder(order);
+        return Ok();
     }
 
     
     [HttpPut]
-    public ActionResult<Order> Put(Order order)
+    public async Task<ActionResult> Put(CreateOrderModel order)
     {
-        _orderService.UpdateOrder(order);        
-        return CreatedAtAction(nameof(Get), new { id = order.OrderId}, order);
+        await _orderService.UpdateOrder(order);        
+        return Ok();
     }
     
     [HttpDelete("{id}")]
-    public ActionResult<Order> Delete(int id)
+    public async Task<ActionResult<Order>> Delete(int id)
     {
-        var order = _orderService.GetOrderById(id);
-        if (order == null)
+        var order = await _orderService.GetOrderById(id);
+        if (order is null)
         {
             return NotFound();
         }
-        _orderService.DeleteOrder(id);
+        await _orderService.DeleteOrder(id);
         return Ok(order);
     } 
     

@@ -3,8 +3,9 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Entities;
+using RetailThings.Application.Models.PaidOrder;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -21,10 +22,10 @@ public class PaidOrderController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    public ActionResult<PaidOrder> Get(int id)
+    public async Task<ActionResult<PaidOrder>> Get(int id)
     {
-        var paidOrder = _paidOrderService.GetPaidOrderById(id);
-        if (paidOrder == null)
+        var paidOrder = await _paidOrderService.GetPaidOrderById(id);
+        if (paidOrder is null)
         {
             return NotFound();
         }
@@ -32,29 +33,29 @@ public class PaidOrderController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<PaidOrder> Post(PaidOrder paidOrder)
+    public async Task<ActionResult> Post(CreatePaidOrderModel paidOrder)
     {
-        _paidOrderService.CreatePaidOrder(paidOrder);
-        return CreatedAtAction(nameof(Get), new { id = paidOrder.PaidOrderId}, paidOrder);
+        await _paidOrderService.CreatePaidOrder(paidOrder);
+        return Ok();
     }
 
-    
+
     [HttpPut]
-    public ActionResult<PaidOrder> Put(PaidOrder paidOrder)
+    public async Task<ActionResult> Put(CreatePaidOrderModel paidOrder)
     {
-        _paidOrderService.UpdatePaidOrder(paidOrder);        
-        return CreatedAtAction(nameof(Get), new { id = paidOrder.PaidOrderId}, paidOrder);
+        await _paidOrderService.UpdatePaidOrder(paidOrder);
+        return Ok();
     }
-    
+
     [HttpDelete("{id}")]
-    public ActionResult<PickUpPoint> Delete(int id)
+    public async Task<ActionResult<PickUpPoint>> Delete(int id)
     {
-        var pickUpPoint = _paidOrderService.GetPaidOrderById(id);
-        if (pickUpPoint == null)
+        var pickUpPoint = await _paidOrderService.GetPaidOrderById(id);
+        if (pickUpPoint is null)
         {
             return NotFound();
         }
-        _paidOrderService.DeletePaidOrder(id);
+        await _paidOrderService.DeletePaidOrder(id);
         return Ok(pickUpPoint);
     } 
     

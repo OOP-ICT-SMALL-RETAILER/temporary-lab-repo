@@ -3,8 +3,8 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Item;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -21,10 +21,10 @@ public class ItemController : ControllerBase
     }
     
     [HttpGet("{id}")]
-    public ActionResult<Item> Get(int id)
+    public async Task<ActionResult<GetItemModel>> Get(int id)
     {
-        var item = _itemService.GetItemById(id);
-        if (item == null)
+        var item = await _itemService.GetItemById(id);
+        if (item is null)
         {
             return NotFound();
         }
@@ -32,25 +32,25 @@ public class ItemController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Item> Post(Item item)
+    public async Task<ActionResult> Post(CreateItemModel createItem)
     {
-        _itemService.CreateItem(item);
-        return CreatedAtAction(nameof(Get), new { id = item.ItemId}, item);
+        await _itemService.CreateItem(createItem);
+        return Created();
     }
 
     
     [HttpPut]
-    public ActionResult<Item> Put(Item item)
+    public async Task<ActionResult> Put(CreateItemModel createItem)
     {
-        _itemService.UpdateItem(item);        
-        return CreatedAtAction(nameof(Get), new { id = item.ItemId}, item);
+        await _itemService.UpdateItem(createItem);
+        return Ok();
     }
     
     [HttpDelete("{id}")]
-    public ActionResult<Item> Delete(int id)
+    public async Task<ActionResult<GetItemModel>> Delete(int id)
     {
-        var pickUpPoint = _itemService.GetItemById(id);
-        if (pickUpPoint == null)
+        var pickUpPoint = await _itemService.GetItemById(id);
+        if (pickUpPoint is null)
         {
             return NotFound();
         }

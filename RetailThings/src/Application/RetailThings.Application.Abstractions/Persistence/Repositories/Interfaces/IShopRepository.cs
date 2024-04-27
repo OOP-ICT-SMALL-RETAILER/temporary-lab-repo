@@ -2,17 +2,17 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Models.Entities;
+
 #pragma warning disable
 
-namespace RetailThings.Application.Contracts.Interfaces;
+namespace RetailThings.Application.Abstractions.Persistence.Repositories.Interfaces;
 
-public interface IShopRepository : IDisposable
+public interface IShopRepository
 {
-    IEnumerable<Shop> GetShop();
-    Shop GetShopById(int shopId);
-    void CreateShop(Shop shop);
-    void DeleteShop(int shopId);
-    void UpdateShop(Shop shop);
-    void Save();
+    Task<IEnumerable<Shop>> GetShop();
+    Task<Shop?> GetShopById(int shopId);
+    Task CreateShop(Shop shop);
+    Task DeleteShop(int shopId);
+    Task UpdateShop(Shop shop);
 }

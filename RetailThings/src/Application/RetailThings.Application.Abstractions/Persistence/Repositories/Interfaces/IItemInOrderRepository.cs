@@ -2,17 +2,16 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Models.Entities;
 
-namespace RetailThings.Application.Contracts.Interfaces;
+namespace RetailThings.Application.Abstractions.Persistence.Repositories.Interfaces;
 #pragma warning disable
 
-public interface IItemInOrderRepository : IDisposable
+public interface IItemInOrderRepository
 {
-    IEnumerable<ItemInOrder> GetItemsInOrders();
-    ItemInOrder GetItemInOrder(int itemInOrderId);
-    void CreateItemInOrder(ItemInOrder temInOrder);
-    void DeleteItemInOrder(int itemInOrderId);
-    void UpdateItemInOrder(ItemInOrder temInOrder);
-    void Save();
+    Task<IEnumerable<ItemInOrder>> GetItemsInOrders();
+    Task<ItemInOrder?> GetItemInOrder(int itemInOrderId);
+    Task CreateItemInOrder(ItemInOrder temInOrder);
+    Task DeleteItemInOrder(int itemInOrderId);
+    Task UpdateItemInOrder(ItemInOrder temInOrder);
 }

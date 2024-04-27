@@ -3,8 +3,9 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Entities;
+using RetailThings.Application.Models.PickUpPoint;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -19,12 +20,12 @@ public class PickUpPointController : ControllerBase
     {
         _pickUpPointService = pickUpPointService;
     }
-    
+
     [HttpGet("{id}")]
-    public ActionResult<PickUpPoint> Get(int id)
+    public async Task<ActionResult<PickUpPoint>> Get(int id)
     {
-        var pickUpPoint = _pickUpPointService.GetPickUpPointById(id);
-        if (pickUpPoint == null)
+        var pickUpPoint = await _pickUpPointService.GetPickUpPointById(id);
+        if (pickUpPoint is null)
         {
             return NotFound();
         }
@@ -32,29 +33,29 @@ public class PickUpPointController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<PickUpPoint> Post(PickUpPoint pickUpPoint)
+    public async Task<ActionResult> Post(CreatePickUpPointModel pickUpPoint)
     {
-        _pickUpPointService.CreatePickUpPoint(pickUpPoint);
-        return CreatedAtAction(nameof(Get), new { id = pickUpPoint.PickUpPointId}, pickUpPoint);
+        await _pickUpPointService.CreatePickUpPoint(pickUpPoint);
+        return Ok();
     }
 
-    
+
     [HttpPut]
-    public ActionResult<PickUpPoint> Put(PickUpPoint pickUpPoint)
+    public async Task<ActionResult> Put(CreatePickUpPointModel pickUpPoint)
     {
-        _pickUpPointService.UpdatePickUpPoint(pickUpPoint);        
-        return CreatedAtAction(nameof(Get), new { id = pickUpPoint.PickUpPointId}, pickUpPoint);
+        await _pickUpPointService.UpdatePickUpPoint(pickUpPoint);
+        return Ok();
     }
-    
+
     [HttpDelete("{id}")]
-    public ActionResult<PickUpPoint> Delete(int id)
+    public async Task<ActionResult<PickUpPoint>> Delete(int id)
     {
-        var pickUpPoint = _pickUpPointService.GetPickUpPointById(id);
-        if (pickUpPoint == null)
+        var pickUpPoint = await _pickUpPointService.GetPickUpPointById(id);
+        if (pickUpPoint is null)
         {
             return NotFound();
         }
-        _pickUpPointService.DeletePickUpPoint(id);
+        await _pickUpPointService.DeletePickUpPoint(id);
         return Ok(pickUpPoint);
-    } 
+    }
 }

@@ -4,7 +4,7 @@
 #pragma warning disable
 
 using Microsoft.EntityFrameworkCore;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Models.Entities;
 
 namespace RetailThings.Infrastructure.Persistence.Contexts;
 
@@ -36,8 +36,8 @@ public class ApplicationContext : DbContext
             entity.Property(user => user.Name).IsRequired();
             entity.Property(user => user.Email).IsRequired();
 
-            entity.HasMany(user => user.Orders).WithOne(order => order.User);
-            entity.HasMany(user => user.Reviews).WithOne(review => review.User);
+            // entity.HasMany(user => user.Orders).WithOne(order => order.User);
+            // entity.HasMany(user => user.Reviews).WithOne(review => review.User);
         });
         
         modelBuilder.Entity<Item>(entity =>
@@ -53,9 +53,9 @@ public class ApplicationContext : DbContext
             entity.Property(item => item.IsSale).IsRequired();
 
 
-            entity.HasOne(item => item.Shop)
-                .WithMany(shop => shop.Items)
-                .IsRequired();
+            // entity.HasOne(item => item.Shop)
+            //     .WithMany(shop => shop.Items)
+            //     .IsRequired();
         });
 
         modelBuilder.Entity<ItemInOrder>(entity =>
@@ -75,10 +75,10 @@ public class ApplicationContext : DbContext
             entity.HasKey(order => order.OrderId);
             entity.Property(order => order.Status).IsRequired();
 
-            entity.HasOne(order => order.User)
-                .WithMany(user => user.Orders).IsRequired();
-            entity.HasOne(order => order.PickUpPoint)
-                .WithMany(pickUpPoint => pickUpPoint.Orders).IsRequired();
+            // entity.HasOne(order => order.User)
+            //     .WithMany(user => user.Orders).IsRequired();
+            // entity.HasOne(order => order.PickUpPoint)
+            //     .WithMany(pickUpPoint => pickUpPoint.Orders).IsRequired();
             entity.HasMany(order => order.ItemInOrders)
                 .WithOne(itemInOrder => itemInOrder.Order).IsRequired();
             
@@ -99,8 +99,8 @@ public class ApplicationContext : DbContext
             entity.Property(review => review.Rating).IsRequired();
             entity.Property(review => review.Description).IsRequired();
 
-            entity.HasOne(review => review.User)
-                .WithMany(user => user.Reviews).IsRequired();
+            // entity.HasOne(review => review.User)
+            //     .WithMany(user => user.Reviews).IsRequired();
             
             entity.HasOne(review => review.Item)
                 .WithMany().IsRequired();
@@ -115,8 +115,8 @@ public class ApplicationContext : DbContext
             entity.Property(shop => shop.Title).IsRequired();
             entity.Property(shop => shop.Owner).IsRequired();
 
-            entity.HasMany(shop => shop.Items)
-                .WithOne(item => item.Shop);
+            // entity.HasMany(shop => shop.Items)
+            //     .WithOne(item => item.Shop);
         });
         
         modelBuilder.Entity<PickUpPoint>(entity =>
@@ -125,8 +125,8 @@ public class ApplicationContext : DbContext
             entity.Property(pickUpPoint => pickUpPoint.Title).IsRequired();
             entity.Property(pickUpPoint => pickUpPoint.Address).IsRequired();
 
-            entity.HasMany(pickUpPoint => pickUpPoint.Orders)
-                .WithOne(order => order.PickUpPoint);
+            // entity.HasMany(pickUpPoint => pickUpPoint.Orders)
+            //     .WithOne(order => order.PickUpPoint);
         });
 
 

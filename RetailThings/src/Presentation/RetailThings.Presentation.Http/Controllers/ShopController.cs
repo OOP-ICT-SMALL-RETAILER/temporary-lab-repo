@@ -3,8 +3,9 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Entities;
+using RetailThings.Application.Models.Shop;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -19,12 +20,12 @@ public class ShopController : ControllerBase
     {
         _shopService = shopService;
     }
-    
+
     [HttpGet("{id}")]
-    public ActionResult<Shop> Get(int id)
+    public async Task<ActionResult<Shop>> Get(int id)
     {
-        var shop = _shopService.GetShopById(id);
-        if (shop == null)
+        var shop = await _shopService.GetShopById(id);
+        if (shop is null)
         {
             return NotFound();
         }
@@ -32,29 +33,29 @@ public class ShopController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Shop> Post(Shop shop)
+    public async Task<ActionResult> Post(ShopModel shop)
     {
-        _shopService.CreateShop(shop);
-        return CreatedAtAction(nameof(Get), new { id = shop.ShopId }, shop);
+        await _shopService.CreateShop(shop);
+        return Ok();
     }
 
-    
+
     [HttpPut]
-    public ActionResult<Shop> Put(Shop shop)
+    public async Task<ActionResult> Put(Shop shop)
     {
-        _shopService.UpdateShop(shop);
-        return CreatedAtAction(nameof(Get), new { id = shop.ShopId }, shop);
+        await _shopService.UpdateShop(shop);
+        return Ok();
     }
-    
+
     [HttpDelete("{id}")]
-    public ActionResult<Shop> Delete(int id)
+    public async Task<ActionResult<Shop>> Delete(int id)
     {
-        var shop = _shopService.GetShopById(id);
-        if (shop == null)
+        var shop = await _shopService.GetShopById(id);
+        if (shop is null)
         {
             return NotFound();
         }
-        _shopService.DeleteShop(id);
+        await _shopService.DeleteShop(id);
         return Ok(shop);
     }
 }

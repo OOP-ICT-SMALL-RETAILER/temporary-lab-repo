@@ -23,7 +23,6 @@ builder.Configuration.AddUserSecrets<Program>();
 builder.Services.AddOptions<JsonSerializerSettings>();
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<JsonSerializerSettings>>().Value);
 
-builder.Services.AddApplication();
 builder.Services
     .AddControllers()
     .AddNewtonsoftJson()
@@ -36,14 +35,16 @@ builder.Host.AddPlatformSerilog(builder.Configuration);
 builder.Services.AddUtcDateTimeProvider();
 
 builder.Services.AddInfrastructurePersistence(builder.Configuration);
+builder.Services.AddApplication();
+
 
 WebApplication app = builder.Build();
 
-await using (var scope = app.Services.CreateAsyncScope())
+await using (AsyncServiceScope scope = app.Services.CreateAsyncScope())
 {
-    var services = scope.ServiceProvider;
+    IServiceProvider services = scope.ServiceProvider;
 
-    var context = services.GetRequiredService<ApplicationContext>();
+    ApplicationContext context = services.GetRequiredService<ApplicationContext>();
     await context.Database.MigrateAsync();
 }
 

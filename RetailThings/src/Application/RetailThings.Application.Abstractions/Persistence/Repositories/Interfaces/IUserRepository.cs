@@ -2,17 +2,16 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Models.Entities;
 
-namespace RetailThings.Application.Contracts.Interfaces;
+namespace RetailThings.Application.Abstractions.Persistence.Repositories.Interfaces;
 #pragma warning disable
 
-public interface IUserRepository : IDisposable
+public interface IUserRepository
 {
-    IEnumerable<User> GetUsers();
-    User GetUserById(int userId);
-    void CreateUser(User user);
-    void DeleteUser(int userId);
-    void UpdateUser(User user);
-    void Save();
+    Task<IEnumerable<User>> GetUsers();
+    Task<User?> GetUserById(int userId);
+    Task CreateUser(User user);
+    Task DeleteUser(int userId);
+    Task UpdateUser(User user);
 }

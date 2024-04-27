@@ -2,17 +2,16 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Models.Entities;
 
-namespace RetailThings.Application.Contracts.Interfaces;
+namespace RetailThings.Application.Abstractions.Persistence.Repositories.Interfaces;
 #pragma warning disable
 
-public interface IReviewRepository : IDisposable
+public interface IReviewRepository
 {
-    IEnumerable<Review> GetReviews();
-    Review GetReviewById(int reviewId);
-    void CreateReview(Review review);
-    void DeleteReview(int reviewId);
-    void UpdateReview(Review review);
-    void Save();
+    Task<IEnumerable<Review>> GetReviews();
+    Task<Review?> GetReviewById(int reviewId);
+    Task CreateReview(Review review);
+    Task DeleteReview(int reviewId);
+    Task UpdateReview(Review review);
 }

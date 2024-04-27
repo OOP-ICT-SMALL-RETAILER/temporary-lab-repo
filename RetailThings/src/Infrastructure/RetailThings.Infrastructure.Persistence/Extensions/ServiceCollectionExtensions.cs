@@ -7,8 +7,10 @@ using Itmo.Dev.Platform.Postgres.Plugins;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RetailThings.Application.Abstractions.Persistence.Repositories.Interfaces;
 using RetailThings.Infrastructure.Persistence.Contexts;
 using RetailThings.Infrastructure.Persistence.Plugins;
+using RetailThings.Infrastructure.Persistence.Repositories.Implementation;
 
 namespace RetailThings.Infrastructure.Persistence.Extensions;
 
@@ -36,6 +38,15 @@ public static class ServiceCollectionExtensions
             options.UseNpgsql(postgresConnectionConfiguration.ToConnectionString()));
         collection.AddSingleton<IDataSourcePlugin, MappingPlugin>();
 
+        collection.AddScoped<IItemInOrderRepository, ItemInOrderRepository>();
+        collection.AddScoped<IShopRepository, ShopRepository>();
+        collection.AddScoped<IItemRepository, ItemRepository>();
+        collection.AddScoped<IUserRepository, UserRepository>();
+        collection.AddScoped<IReviewRepository, ReviewRepository>();
+        collection.AddScoped<IPickUpPointRepository, PickUpPointPointRepository>();
+        collection.AddScoped<IOrderRepository, OrderRepository>();
+        collection.AddScoped<IPaidOrderRepository, PaidOrderRepository>();
+        
         // collection.AddPlatformMigrations(typeof(IAssemblyMarker).Assembly);
         // collection.AddHostedService<MigrationRunnerService>();
         

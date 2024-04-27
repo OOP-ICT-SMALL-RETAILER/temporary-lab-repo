@@ -2,18 +2,17 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Models.Entities;
 
-namespace RetailThings.Application.Contracts.Interfaces;
+namespace RetailThings.Application.Abstractions.Persistence.Repositories.Interfaces;
 #pragma warning disable
 
-public interface IPaidOrderRepository : IDisposable
+public interface IPaidOrderRepository
 {
-    IEnumerable<PaidOrder> GetPaidOrders();
-    PaidOrder GetPaidOrderById(int paidOrderId);
-    void CreatePaidOrder(PaidOrder paidOrder);
-    void DeletePaidOrder(int paidOrderId);
-    void UpdatePaidOrder(PaidOrder paidOrder);
-    void Save();
+    Task<IEnumerable<PaidOrder>> GetPaidOrders();
+    Task<PaidOrder?> GetPaidOrderById(int paidOrderId);
+    Task CreatePaidOrder(PaidOrder paidOrder);
+    Task DeletePaidOrder(int paidOrderId);
+    Task UpdatePaidOrder(PaidOrder paidOrder);
     
 }

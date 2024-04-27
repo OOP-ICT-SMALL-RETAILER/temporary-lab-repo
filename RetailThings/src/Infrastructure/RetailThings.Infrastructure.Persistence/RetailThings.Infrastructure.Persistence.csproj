@@ -16,6 +16,11 @@
         <PackageReference Include="Itmo.Dev.Platform.Common" />
 
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Application\RetailThings.Application.Abstractions\RetailThings.Application.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Application\RetailThings.Application.Models\RetailThings.Application.Models.csproj" />
+    </ItemGroup>
     
     
 </Project>

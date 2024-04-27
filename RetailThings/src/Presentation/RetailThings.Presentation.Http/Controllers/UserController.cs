@@ -3,8 +3,9 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Entities;
+using RetailThings.Application.Models.User;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -21,10 +22,10 @@ public class UserController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult<User> Get(int id)
+    public async Task<ActionResult<User>> Get(int id)
     {
-        var user = _userService.GetUserById(id);
-        if (user == null)
+        var user = await _userService.GetUserById(id);
+        if (user is null)
         {
             return NotFound();
         }
@@ -32,29 +33,29 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<User> Post(User user)
+    public async Task<ActionResult> Post(CreateUserModel user)
     {
-        _userService.CreateUser(user);
-        return CreatedAtAction(nameof(Get), new { id = user.UserId }, user);
+        await _userService.CreateUser(user);
+        return Ok();
     }
 
     
     [HttpPut]
-    public ActionResult<User> Put(User user)
+    public async Task<ActionResult<User>> Put(CreateUserModel user)
     {
-        _userService.UpdateUser(user);
-        return CreatedAtAction(nameof(Get), new { id = user.UserId }, user);
+        await _userService.UpdateUser(user);
+        return Ok();
     }
     
     [HttpDelete("{id}")]
-    public ActionResult<User> Delete(int id)
+    public async Task<ActionResult<User>> Delete(int id)
     {
-        var user = _userService.GetUserById(id);
-        if (user == null)
+        var user = await _userService.GetUserById(id);
+        if (user is null)
         {
             return NotFound();
         }
-        _userService.DeleteUser(id);
+        await _userService.DeleteUser(id);
         return Ok(user);
     }
 }

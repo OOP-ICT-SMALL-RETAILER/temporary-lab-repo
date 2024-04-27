@@ -3,8 +3,9 @@
 // </copyright>
 
 using Microsoft.AspNetCore.Mvc;
-using RetailThings.Application.Contracts.Interfaces;
-using RetailThings.Infrastructure.Persistence.Entities;
+using RetailThings.Application.Abstractions.Interfaces;
+using RetailThings.Application.Models.Entities;
+using RetailThings.Application.Models.Review;
 
 namespace RetailThings.Presentation.Http.Controllers;
 #pragma warning disable
@@ -19,12 +20,12 @@ public class ReviewController : ControllerBase
     {
         _reviewService = reviewService;
     }
-    
+
     [HttpGet("{id}")]
-    public ActionResult<Review> Get(int id)
+    public async Task<ActionResult<Review>> Get(int id)
     {
-        var review = _reviewService.GetReviewById(id);
-        if (review == null)
+        var review = await _reviewService.GetReviewById(id);
+        if (review is null)
         {
             return NotFound();
         }
@@ -32,31 +33,31 @@ public class ReviewController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Review> Post(Review review)
+    public async Task<ActionResult> Post(CreateReviewModel review)
     {
-        _reviewService.CreateReview(review);
-        return CreatedAtAction(nameof(Get), new { id = review.ReviewId }, review);
+        await _reviewService.CreateReview(review);
+        return Ok();
     }
 
-    
+
     [HttpPut]
-    public ActionResult<Review> Put(Review review)
+    public async Task<ActionResult> Put(CreateReviewModel review)
     {
-        _reviewService.UpdateReview(review);        
-        return CreatedAtAction(nameof(Get), new { id = review.ReviewId }, review);
+        await _reviewService.UpdateReview(review);
+        return Ok();
     }
-    
+
     [HttpDelete("{id}")]
-    public ActionResult<Review> Delete(int id)
+    public async Task<ActionResult<Review>> Delete(int id)
     {
-        var review = _reviewService.GetReviewById(id);
-        if (review == null)
+        var review = await _reviewService.GetReviewById(id);
+        if (review is null)
         {
             return NotFound();
         }
-        _reviewService.DeleteReview(id);
+        await _reviewService.DeleteReview(id);
         return Ok(review);
-    } 
-    
-    
+    }
+
+
 }
