@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\RetailThings.Application.Abstractions\RetailThings.Application.Abstractions.csproj"/>
+        <ProjectReference Include="..\RetailThings.Application.Contracts\RetailThings.Application.Contracts.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MediatR" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
+    </ItemGroup>
+
+</Project>

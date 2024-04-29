@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <ItemGroup>
+        <ProjectReference Include="..\Application\RetailThings.Application\RetailThings.Application.csproj"/>
+        <ProjectReference Include="..\Infrastructure\RetailThings.Infrastructure.Persistence\RetailThings.Infrastructure.Persistence.csproj"/>
+        <ProjectReference Include="..\Presentation\RetailThings.Presentation.Http\RetailThings.Presentation.Http.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Itmo.Dev.Platform.Logging"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+        <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+    </ItemGroup>
+
+
+    <PropertyGroup>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <GenerateRuntimeConfigDevFile>true</GenerateRuntimeConfigDevFile>
+    </PropertyGroup>
+    
+    
+    
+    <ItemGroup>
+        <Content Update="appsettings.*.json">
+            <DependentUpon>appsettings.json</DependentUpon>
+        </Content>
+    </ItemGroup>
+
+
+
+
+</Project>

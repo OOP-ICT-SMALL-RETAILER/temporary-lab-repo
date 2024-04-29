@@ -1,0 +1,19 @@
+﻿namespace RetailThings.Presentation.Http.Middleswares;
+
+public class LoggingMiddleware
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger _logger;
+
+    public LoggingMiddleware(RequestDelegate next, ILogger<LoggingMiddleware> logger)
+    {
+        _next = next;
+        _logger = logger;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        _logger.LogInformation($"Log request {context.Request.Method} {context.Request.Host} {context.Request.Path}");
+        await _next(context);
+    }
+}
